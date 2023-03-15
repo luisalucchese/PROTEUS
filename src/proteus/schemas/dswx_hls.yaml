@@ -7,7 +7,7 @@ runconfig:
 
         input_file_group:
             # REQUIRED - Single HLS dataset (directory or files)
-            input_file_path: list(str(), min=1)
+            input_file_path: list(str('D:/Luisa/start_insitu_data_wrongdata/downloaded/HLS.S30.T18TWK.2021250T154809.v2.0.B03.subset.tif'), min=1)
        
         dynamic_ancillary_file_group:
             # Digital elevation model file

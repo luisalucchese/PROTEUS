@@ -48,12 +48,17 @@ class CleanCommand(Command):
         pass
     def finalize_options(self):
         pass
-    def run(self):
+    #def run(self):
         # Make sure to remove the .egg-info file 
-        os.system('rm -vrf .scratch_dir ./build ./dist ./*.pyc ./*.tgz ./*.egg-info ./src/*.egg-info')
+        #os.system('rm -vrf .scratch_dir ./build ./dist ./*.pyc ./*.tgz ./*.egg-info ./src/*.egg-info')
+        #os.system('del *.pyc *.tgz *.egg-info ./src/*.egg-info') #windows - not working
+        #os.system('rmdir "*.egg-info" "./src/*.egg-info"') #windows - not working
+        # I will delete files myself
 
 
-long_description = open('README.md').read()
+#long_description=open('README.md').read()
+
+long_des=open("./README.md", encoding="utf8").read() #select right encoding
 
 package_data_dict = {}
 
@@ -80,7 +85,7 @@ setup(
     url='https://github.com/opera-adt/PROTEUS',
     license='Copyright by the California Institute of Technology.'
     ' ALL RIGHTS RESERVED.',
-    long_description=long_description,
+    long_description=long_des,
     cmdclass={
         'clean': CleanCommand,
         }
