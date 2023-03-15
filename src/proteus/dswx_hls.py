@@ -14,9 +14,11 @@ from osgeo import gdal, osr, ogr
 from scipy.ndimage import binary_dilation
 import scipy
 
-from proteus.core import save_as_cog
+from core import save_as_cog
 
-from proteus.version import VERSION as SOFTWARE_VERSION
+#from proteus.version import VERSION as SOFTWARE_VERSION
+
+SOFTWARE_VERSION=0.0
 
 '''
 Internally, DSWx-HLS SAS stores 4 water classes. The flag below enables or
@@ -2198,7 +2200,7 @@ def _load_hls_band_from_file(filename, image_dict, offset_dict, scale_dict,
 
     image_dict['invalid_ind_array'] = invalid_ind_array
 
-    # creatre/update geographical grid
+    # create/update geographical grid
     if 'geotransform' not in image_dict.keys():
         image_dict['geotransform'] = \
             layer_gdal_dataset.GetGeoTransform()
@@ -2345,7 +2347,8 @@ def _load_hls_product_v1(filename, image_dict, offset_dict,
         else:
             band_name = s30_v1_band_dict[key]
 
-        band_ref = f'HDF4_EOS:EOS_GRID:"{filename}":Grid:{band_name}'
+       # band_ref = f'HDF4_EOS:EOS_GRID:"{filename}":Grid:{band_name}'
+        band_ref=filename
         success = _load_hls_band_from_file(band_ref, image_dict, offset_dict,
                                            scale_dict, dswx_metadata_dict,
                                            key, flag_offset_and_scale_inputs,
